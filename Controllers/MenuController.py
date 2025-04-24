@@ -1,3 +1,4 @@
+from Controllers.datosABCController import datosABCController
 from Views.MenuView import MenuView
 from Controllers.AbcController import AbcController
 
@@ -22,7 +23,7 @@ class MenuController:
     def controlOptions(self, opt):
         if opt == "1":
             self.view.hide()
-            AbcController().show()
+            datosABCController(self).show()
         elif opt == "2":
             self.view.showMessage("Opcion","Opcion 2")
         elif opt == "3":

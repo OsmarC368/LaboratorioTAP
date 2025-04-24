@@ -2,26 +2,6 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 
-dataDefault = [["a", 80, 522],
-               ["b", 514, 54.07],
-               ["c", 19, 0.65],
-               ["d", 2442, 16.11],
-               ["e", 650, 4.61],
-               ["f", 128, 0.63],
-               ["g", 2500, 1.2],
-               ["h", 4, 22.05],
-               ["i", 25, 5.01],
-               ["j", 2232, 2.48],
-               ["k", 2, 4.78],
-               ["l", 1, 38.03],
-               ["m", , ],
-               ["n", , ],
-               ["o", , ],
-               ["p", , ],
-               ["q", , ],
-               ["r", , ],
-               ["s", , ],
-               ]
 
 class AbcView:
     def __init__(self, controller):
@@ -36,7 +16,48 @@ class AbcView:
         self.labelTitle.pack(pady=8)
 
         #TreeView
-        self.tabla = ttk.Treeview()
+        self.tabla = ttk.Treeview(self.window, columns=("col1","col2"), height=15)
+        self.tabla.column("#0", width=180)
+        self.tabla.column("col1", width=180, anchor=tk.CENTER)
+        self.tabla.column("col2", width=180, anchor=tk.CENTER)
+        self.tabla.heading("#0", text="Producto", anchor=tk.CENTER)
+        self.tabla.heading("col1", text="Tipo", anchor=tk.CENTER)
+        self.tabla.heading("col2", text="Valor", anchor=tk.CENTER)
+        self.tabla.pack()
+        self.loadTable()
 
+        self.buttonGraph = tk.Button(
+            self.window, 
+            command=self.controller.showPieGraph, 
+            text="Grafico",
+            background="#243d55",
+            activebackground="#61b9eb",
+            foreground="#aaaaaa",
+            activeforeground="WHITE",
+            border=3,
+            font=("Arial", 10, "bold")
+            ).pack(pady=5)
+        
+        self.buttonGraph = tk.Button(
+            self.window, 
+            command=self.controller.showMenu, 
+            text="Menu Principal",
+            background="#243d55",
+            activebackground="#61b9eb",
+            foreground="#aaaaaa",
+            activeforeground="WHITE",
+            border=3,
+            font=("Arial", 10, "bold")
+            ).pack(pady=5)
+
+        
     def show(self):
         self.window.mainloop()
+
+    def close(self):
+        self.window.destroy()
+
+    def loadTable(self):
+        data = self.controller.getDataABC()
+        for x in data:
+            self.tabla.insert("", tk.END, text=f"{x[0]}", values=(x[1], x[2]))
