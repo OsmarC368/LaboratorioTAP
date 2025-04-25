@@ -17,8 +17,8 @@ class Models:
         bc = []
         popList = []
         for i, x in enumerate(data):
-            if x[3] + auxA < typeA:
-                a.append([f"N-{x[0]}", "A", x[3]])
+            if x[3] + auxA <= typeA:
+                a.append([f"N-{x[0]}", x[1], x[2], x[3], "A"])
                 auxA += x[3]
                 popList.append(i)
             else:
@@ -27,11 +27,11 @@ class Models:
 
         
         for x in data[::-1]:
-            if x[3] + auxC < typeC:
+            if x[3] + auxC <= typeC:
                 auxC += x[3]
-                bc.append([f"N-{x[0]}", "C", x[3]])
+                bc.append([f"N-{x[0]}", x[1], x[2], x[3], "C"])
             else:
-                bc.append([f"N-{x[0]}", "B", x[3]])
+                bc.append([f"N-{x[0]}", x[1], x[2], x[3], "B"])
 
 
         [a.append(x) for x in bc[::-1]]

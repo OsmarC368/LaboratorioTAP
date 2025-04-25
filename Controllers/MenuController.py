@@ -23,7 +23,7 @@ class MenuController:
     def controlOptions(self, opt):
         if opt == "1":
             self.view.hide()
-            datosABCController(self).show()
+            datosABCController(self).initiate()
         elif opt == "2":
             self.view.showMessage("Opcion","Opcion 2")
         elif opt == "3":

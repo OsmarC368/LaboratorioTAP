@@ -44,12 +44,27 @@ class datosABCView:
             font=("Arial", 10, "bold")
         ).pack(pady=6)
 
+        self.menuButton = tk.Button(
+            self.window,
+            text="Menu Principal",
+            width=25,
+            height=2,
+            command= lambda: self.controller.mainMenu(),
+            background="#243d55",
+            activebackground="#61b9eb",
+            foreground="#aaaaaa",
+            activeforeground="WHITE",
+            border=3,
+            font=("Arial", 10, "bold")
+        ).pack(pady=6)
+
 
     def close(self):
         self.window.destroy()
 
     def initiate(self):
         self.window.mainloop()
+
 
     def showMessage(self, title, message):
         messagebox.showinfo(title, message,)

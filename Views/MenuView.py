@@ -8,7 +8,7 @@ class MenuView:
         self.controller = controller
         self.window = tk.Tk()
         self.window.title("Menu Principal")
-        self.window.geometry("500x300")
+        self.window.geometry("600x375")
         self.window.resizable(0,0)
         self.window.configure(background="#2b2f36")
         #labels
@@ -17,6 +17,19 @@ class MenuView:
 
         #Create Options
         self.createOptions()
+        self.exitButton = tk.Button(
+            self.window,
+                text="Salir",
+                width=25,
+                height=2,
+                command= lambda: self.close(),
+                background="#243d55",
+                activebackground="#61b9eb",
+                foreground="#aaaaaa",
+                activeforeground="WHITE",
+                border=3,
+                font=("Arial", 10, "bold")
+        ).pack(pady=6)
 
 
     def show(self):
@@ -27,6 +40,9 @@ class MenuView:
 
     def showMessage(self, title, message):
         messagebox.showinfo(title, message,)
+
+    def close(self):
+        self.window.destroy()
 
     def createOptions(self):
         options = self.controller.options()

@@ -16,13 +16,17 @@ class AbcView:
         self.labelTitle.pack(pady=8)
 
         #TreeView
-        self.tabla = ttk.Treeview(self.window, columns=("col1","col2"), height=15)
-        self.tabla.column("#0", width=180)
-        self.tabla.column("col1", width=180, anchor=tk.CENTER)
-        self.tabla.column("col2", width=180, anchor=tk.CENTER)
+        self.tabla = ttk.Treeview(self.window, columns=("col1","col2", "col3", "col4"), height=15)
+        self.tabla.column("#0", width=120)
+        self.tabla.column("col1", width=120, anchor=tk.CENTER)
+        self.tabla.column("col2", width=120, anchor=tk.CENTER)
+        self.tabla.column("col3", width=120, anchor=tk.CENTER)
+        self.tabla.column("col4", width=120, anchor=tk.CENTER)
         self.tabla.heading("#0", text="Producto", anchor=tk.CENTER)
-        self.tabla.heading("col1", text="Tipo", anchor=tk.CENTER)
-        self.tabla.heading("col2", text="Valor", anchor=tk.CENTER)
+        self.tabla.heading("col1", text="Uso Anual", anchor=tk.CENTER)
+        self.tabla.heading("col2", text="Costo Unitario", anchor=tk.CENTER)
+        self.tabla.heading("col3", text="Valor Total", anchor=tk.CENTER)
+        self.tabla.heading("col4", text="Tipo", anchor=tk.CENTER)
         self.tabla.pack()
         self.loadTable()
 
@@ -60,4 +64,4 @@ class AbcView:
     def loadTable(self):
         data = self.controller.getDataABC()
         for x in data:
-            self.tabla.insert("", tk.END, text=f"{x[0]}", values=(x[1], x[2]))
+            self.tabla.insert("", tk.END, text=f"{x[0]}", values=(x[1], x[2], x[3], x[4]))

@@ -4,19 +4,19 @@ import matplotlib.pyplot as plt
 
 class AbcController:
     def __init__(self, menuController, data):
+        self.dataABC = Models().ABC(data)
         self.view = AbcView(self)
         self.menuController = menuController
-        self.data = data
 
     def show(self):
         self.view.show()
 
     def getDataABC(self):
-        return Models().ABC(self.data)
+        return self.dataABC
     
     def showPieGraph(self):
-        datos = self.getDataABC()
-        y = [len([x for x in datos if x[1] == 'A']), len([x for x in datos if x[1] == "B"]), len([x for x in datos if x[1] == "C"])]
+        datos = self.dataABC
+        y = [len([x for x in datos if x[4] == 'A']), len([x for x in datos if x[4] == "B"]), len([x for x in datos if x[4] == "C"])]
         labels = ["A", "B", "C"]
         plt.pie(y, labels=labels, autopct="%1.1f%%")
         plt.legend(title = "Tipo ABC")
