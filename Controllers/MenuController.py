@@ -1,3 +1,4 @@
+from Controllers.ModelsOptionsController import ModelsOptionsController
 from Controllers.datosABCController import datosABCController
 from Views.MenuView import MenuView
 from Controllers.AbcController import AbcController
@@ -9,7 +10,7 @@ class MenuController:
     def options(self):
         return {
             "1": "Determinar Tipo ABC",
-            "2": "Texto2",
+            "2": "Modelos de Inventario",
             "3": "Texto3",
             "4": "Texto4"
         }
@@ -25,7 +26,8 @@ class MenuController:
             self.view.hide()
             datosABCController(self).initiate()
         elif opt == "2":
-            self.view.showMessage("Opcion","Opcion 2")
+            self.view.hide()
+            ModelsOptionsController(self).initiate()
         elif opt == "3":
             self.view.showMessage("Opcion","Opcion 3")
         elif opt == "4":
