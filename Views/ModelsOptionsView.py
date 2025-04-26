@@ -63,7 +63,7 @@ class ModelsOptionsView:
             text="Menu Principal",
             width=25,
             height=2,
-            command= lambda: self.controller.mainMenu(),
+            command= lambda: self.controller.showMenu(),
             background="#243d55",
             activebackground="#61b9eb",
             foreground="#aaaaaa",

@@ -123,3 +123,47 @@ class Models:
 
     def calcProbPerdida(self, h, Q, pAPerdida, E):
         return (h*Q) / (h*Q+pAPerdida*E)
+    
+    def queuingModel(self, llegada, Servicio, n, tiempo, clientesN):
+        landa = llegada
+        u = Servicio
+        result = []
+
+        L = landa / (u - landa)
+        result.append(f"Cantidad de Clientes en Cola: {L}")
+        
+        Lq = (landa**2) / (u*(u-landa))
+        result.append(f"Cantidad de Clientes en Sistema: {Lq}")
+
+        W = 1 / (u-landa)
+        result.append(f"Tiempo Promedio en el Sistema: {W}")
+
+        Wq = W - (1/u)
+        result.append(f"Tiempo Promedio en Cola: {Wq}")
+        
+        p = landa / u
+        probN = self.calcProbN(n, p)
+        result.append(f"La Probabilidad de {n} o mas Clientes es: {round(probN*100, 2)}%")
+        
+        pN = (1-p)*(p**clientesN)
+        result.append(f"La Probabilidad de {clientesN} Clientes es: {round(pN*100, 2)}%")
+
+        tiempoEspera = exp(-1*(u-landa) * tiempo)
+        result.append(f"La Probabilidad de Esperar {tiempo} es: {round(tiempoEspera*100, 2)}%")
+
+
+        return [result, p]
+    
+    
+    def probN(self, p, clientes):
+        return (1-p)*(p**clientes)
+
+    def calcProbN(self, n, p):
+        resultP = []
+
+        for i in range(n+1):
+            resultP.append((1-p)*(p**i))
+
+        return 1-sum(resultP)
+
+

@@ -15,11 +15,6 @@ class ModelsOptionsController:
     def initiate(self):
         self.view.initiate()
 
-    def controlOptions(self, opt):
-        if opt == "1":
-            self.view.showMessage("1", "1")
-        elif opt == "2":
-            self.view.showMessage("2", "2")
     
     def Standard(self):
         self.view.close()
