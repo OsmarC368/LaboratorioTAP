@@ -1,6 +1,7 @@
 
 from Controllers.ProbabilisticModelController import ProbabilisticModelController
 from Controllers.StandardModelController import StandardModelController
+from Controllers.discountModelController import discountModelController
 from Views.ModelsOptionsView import ModelsOptionsView
 
 
@@ -23,6 +24,10 @@ class ModelsOptionsController:
     def Probabilistic(self):
         self.view.close()
         ProbabilisticModelController(self.menuController).initiate()
+
+    def Discount(self):
+        self.view.close()
+        discountModelController(self.menuController).initiate()
 
     def showMenu(self):
         self.view.close()

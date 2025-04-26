@@ -3,6 +3,16 @@ from scipy.stats import norm
 class Models:
     def __init__(self):
         pass
+    
+    def getInterData(self, data, dCant):
+        for x in data:
+            if int(x[0][0]) <= dCant or dCant <= int(x[0][1]):
+                return x
+
+
+    def descModel(self, discList, dCant, originPrice):
+        inter = self.getInterData(discList, dCant)
+        discPrice = originPrice * (1-inter[1])
 
     def ABC(self, data):
         list(map(lambda x: x.append(x[1]*x[2]), data))

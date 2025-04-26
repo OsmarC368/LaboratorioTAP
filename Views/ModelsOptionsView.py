@@ -49,7 +49,7 @@ class ModelsOptionsView:
             text="Descuento",
             width=25,
             height=2,
-            #command= lambda: self.controller.controlOptions("2"),
+            command= lambda: self.controller.Discount(),
             background="#243d55",
             activebackground="#61b9eb",
             foreground="#aaaaaa",
