@@ -9,7 +9,7 @@ class discountModelView:
         self.x = 60
         self.window = tk.Tk()
         self.window.title("Descuento")
-        self.window.geometry("590x900")
+        self.window.geometry("590x980")
         self.window.resizable(0,0)
         self.window.configure(background="#2b2f36")
         #labels
@@ -43,6 +43,11 @@ class discountModelView:
         self.entrydCant = tk.Entry(self.window, width=20)
         self.entrydCant.place(x=self.x*5.65, y=500)
 
+        self.labeldOrigPrice = tk.Label(self.window, text="Ingrese el Precio Original:", font=("Arial", 11, "bold"), foreground="WHITE", background="#2b2f36")
+        self.labeldOrigPrice.place(x=self.x, y=540)
+        self.entrydOrigPrice = tk.Entry(self.window, width=20)
+        self.entrydOrigPrice.place(x=self.x*5.65, y=540)
+
         self.tabla = ttk.Treeview(self.window, columns=("col1","col2", "col3"), height=6)
         self.tabla.column("#0", width=115)
         self.tabla.column("col1", width=115, anchor=tk.CENTER)
@@ -57,9 +62,9 @@ class discountModelView:
 
         #Resultado TEXT
         self.labelResult = tk.Label(self.window, text="Resultado", font=("Arial", 13, "bold"), foreground="WHITE", background="#2b2f36")
-        self.labelResult.place(x=255, y=560)
+        self.labelResult.place(x=255, y=620)
         self.textResult = tk.Text(self.window, height=10, width=50)
-        self.textResult.place(x=95, y=590)
+        self.textResult.place(x=95, y=670)
 
 
         self.buttonCalc = tk.Button(
@@ -74,7 +79,7 @@ class discountModelView:
             activeforeground="WHITE",
             border=3,
             font=("Arial", 10, "bold")
-            ).place(x=self.x, y=530)
+            ).place(x=self.x, y=600)
         
         self.buttonAdd = tk.Button(
             self.window, 
@@ -89,23 +94,8 @@ class discountModelView:
             border=3,
             font=("Arial", 10, "bold")
             ).place(x=self.x, y=290)
+
         
-        self.buttonGraph = tk.Button(
-            self.window, 
-            text="Grafico",
-            width=20,
-            height=1,
-            #command= lambda: self.controller.showGraph(),
-            background="#243d55",
-            activebackground="#61b9eb",
-            foreground="WHITE",
-            activeforeground="WHITE",
-            border=3,
-            font=("Arial", 10, "bold"),
-            state="disabled"
-            )
-        
-        self.buttonGraph.place()
         
         self.buttonMenu = tk.Button(
             self.window,
@@ -119,7 +109,7 @@ class discountModelView:
             activeforeground="WHITE",
             border=3,
             font=("Arial", 10, "bold")
-            ).place(x=190, y=800)
+            ).place(x=190, y=890)
 
 
     def close(self):

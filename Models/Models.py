@@ -6,13 +6,26 @@ class Models:
     
     def getInterData(self, data, dCant):
         for x in data:
-            if int(x[0][0]) <= dCant or dCant <= int(x[0][1]):
+            if int(x[0][0]) <= dCant and dCant <= int(x[0][1]):
                 return x
 
 
     def descModel(self, discList, dCant, originPrice):
         inter = self.getInterData(discList, dCant)
-        discPrice = originPrice * (1-inter[1])
+        discPrice = originPrice * (1 - (inter[1]/100))
+        totalPrice = discPrice * dCant
+        almcPrice = inter[2] * dCant
+        totalCost = totalPrice + almcPrice + inter[3]
+
+        return [
+            f"Cantidad a Evaluar: {dCant}",
+            f"Precio Unitario con Descuento: {discPrice}",
+            f"Costo Total por la Cantidad: {totalPrice}",
+            f"Costo de Almacenamiento: {almcPrice}",
+            f"Costo de Preparación: {inter[3]}",
+            f"Total: {totalCost}"
+        ]
+
 
     def ABC(self, data):
         list(map(lambda x: x.append(x[1]*x[2]), data))

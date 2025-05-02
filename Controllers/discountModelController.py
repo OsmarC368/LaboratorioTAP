@@ -19,15 +19,15 @@ class discountModelController:
     def solve(self):
         try:
             dCant = float(self.view.entrydCant.get())
+            orgPrice = float(self.view.entrydOrigPrice.get())
 
-            result = Models().descModel(self.discList, dCant)
+            result = Models().descModel(self.discList, dCant, orgPrice)
 
             self.view.textResult.delete('1.0', "end")
             
-            for i,x in enumerate(result[0]):
+            for i,x in enumerate(result):
                 self.view.textResult.insert('end', f"{x}\n")
 
-            "self.view.buttonGraph.config(state="normal")
 
         except:
             self.view.showMessage("ERROR", "Error en la Entrada de Datos")
