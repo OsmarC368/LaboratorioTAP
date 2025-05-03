@@ -119,7 +119,7 @@ class discountModelView:
         self.window.mainloop()
 
     def showMessage(self, title, message):
-        messagebox.showinfo(title, message,)
+        messagebox.showinfo(title, message)
     
     def hide(self):
         self.window.withdraw()

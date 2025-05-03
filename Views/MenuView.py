@@ -8,7 +8,7 @@ class MenuView:
         self.controller = controller
         self.window = tk.Tk()
         self.window.title("Menu Principal")
-        self.window.geometry("600x325")
+        self.window.geometry("600x420")
         self.window.resizable(0,0)
         self.window.configure(background="#2b2f36")
         #labels

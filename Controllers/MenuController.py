@@ -1,4 +1,5 @@
 from Controllers.ModelsOptionsController import ModelsOptionsController
+from Controllers.TipoDemandaController import TipoDemandaController
 from Controllers.datosABCController import datosABCController
 from Controllers.queuingModelController import queuingModelController
 from Views.MenuView import MenuView
@@ -13,6 +14,8 @@ class MenuController:
             "1": "Determinar Tipo ABC",
             "2": "Modelos de Inventario",
             "3": "Modelo de Colas",
+            "4": "Tipo de Demanda",
+            "5": "Ejercicio Parte 3"
         }
     
     def show(self):
@@ -31,3 +34,6 @@ class MenuController:
         elif opt == "3":
             self.view.hide()
             queuingModelController(self).initiate()
+        elif opt == "4":
+            self.view.hide()
+            TipoDemandaController(self).initiate()

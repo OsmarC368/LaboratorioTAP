@@ -188,5 +188,19 @@ class Models:
             resultP.append((1-p)*(p**i))
 
         return 1-sum(resultP)
+    
+    def tipoDemanda(self, datos):
+        n = len(datos)
+
+        d = sum(datos) / n
+
+        s = (sum([x**2 for x in datos]) - (n*(d**2))) / len(datos) - 1
+
+        compVar = (s**2) / (d**2)
+
+        if(compVar < 0.2):
+            return "Determinista"
+        else:
+            return "Probabilistica"
 
 

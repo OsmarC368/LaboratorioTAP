@@ -61,6 +61,9 @@ class AbcView:
     def close(self):
         self.window.destroy()
 
+    def showMessage(self, title, message):
+        messagebox.showinfo(title, message)
+
     def loadTable(self):
         data = self.controller.getDataABC()
         for x in data:
