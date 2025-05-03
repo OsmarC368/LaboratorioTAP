@@ -38,7 +38,6 @@ class ProbabilisticModelController:
             for i,x in enumerate(result[0]):
                 self.view.textResult.insert('end', f"{x}\n")
 
-            self.view.buttonGraph.config(state="normal")
 
         except:
             self.view.showMessage("ERROR", "Error en la Entrada de Datos")

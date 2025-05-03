@@ -1,3 +1,4 @@
+from Controllers.Ejercicio2Controller import Ejercicio2Controller
 from Controllers.ModelsOptionsController import ModelsOptionsController
 from Controllers.TipoDemandaController import TipoDemandaController
 from Controllers.datosABCController import datosABCController
@@ -15,7 +16,7 @@ class MenuController:
             "2": "Modelos de Inventario",
             "3": "Modelo de Colas",
             "4": "Tipo de Demanda",
-            "5": "Ejercicio Parte 3"
+            "5": "Ejercicio 2"
         }
     
     def show(self):
@@ -37,3 +38,6 @@ class MenuController:
         elif opt == "4":
             self.view.hide()
             TipoDemandaController(self).initiate()
+        elif opt == "5":
+            self.view.hide()
+            Ejercicio2Controller(self).initiate()

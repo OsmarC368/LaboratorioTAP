@@ -1,5 +1,6 @@
 from Models.Models import Models
 from Views.TipoDemandaView import TipoDemandaView
+import matplotlib.pyplot as plt
 
 class TipoDemandaController:
     def __init__(self, menuController):
@@ -21,7 +22,15 @@ class TipoDemandaController:
         except:
             self.view.showMessage("ERROR", "Error en la Entrada de Datos")
 
-    
+    def showGraph(self):
+        try:
+            data = list(map(lambda x: int(x), self.view.entryData.get().split(",")))
+            plt.plot(data)
+            plt.title("Grafico de la Demanda")
+            plt.show()
+        except:
+            self.view.showMessage("ERROR", "Error en la Entrada de Datos")
+
 
     def showMenu(self):
         self.view.close()

@@ -8,7 +8,7 @@ class AbcView:
         self.controller = controller
         self.window = tk.Tk()
         self.window.title("Determinar Tipo ABC")
-        self.window.geometry("800x500")
+        self.window.geometry("800x600")
         self.window.resizable(0,0)
         self.window.configure(background="#2b2f36")
         #labels
@@ -16,7 +16,7 @@ class AbcView:
         self.labelTitle.pack(pady=8)
 
         #TreeView
-        self.tabla = ttk.Treeview(self.window, columns=("col1","col2", "col3", "col4"), height=15)
+        self.tabla = ttk.Treeview(self.window, columns=("col1","col2", "col3", "col4"), height=20)
         self.tabla.column("#0", width=120)
         self.tabla.column("col1", width=120, anchor=tk.CENTER)
         self.tabla.column("col2", width=120, anchor=tk.CENTER)
@@ -42,7 +42,7 @@ class AbcView:
             font=("Arial", 10, "bold")
             ).pack(pady=5)
         
-        self.buttonGraph = tk.Button(
+        self.buttonMenu = tk.Button(
             self.window, 
             command=self.controller.showMenu, 
             text="Menu Principal",

@@ -43,7 +43,24 @@ class TipoDemandaView:
             activeforeground="WHITE",
             border=3,
             font=("Arial", 10, "bold")
-            ).place(x=self.x*2.9, y=190)
+            ).place(x=self.x, y=190)
+        
+        self.buttonGraph = tk.Button(
+            self.window, 
+            text="Grafico",
+            width=20,
+            height=1,
+            command= lambda: self.controller.showGraph(),
+            background="#243d55",
+            activebackground="#61b9eb",
+            foreground="WHITE",
+            activeforeground="WHITE",
+            border=3,
+            font=("Arial", 10, "bold")
+            #state="disabled"
+            )
+        
+        self.buttonGraph.place(x=self.x*5, y=190)
 
         
         self.buttonMenu = tk.Button(

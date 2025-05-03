@@ -202,5 +202,38 @@ class Models:
             return "Determinista"
         else:
             return "Probabilistica"
+        
+    def Ejercicio2(self, demanda1, demanda2, h, k, l):
+        result = [] 
+        #GERENTE
+        result.append(f"\---------Politica Gerente--------/")
+        result.append(f"Demanda Anual Acumulada 1: {sum(demanda1)}")
+        result.append(f"Demanda Anual Acumulada 2: {sum(demanda2)}")
+        
+        result.append(f"Trimestre 1: {round((demanda2[0]+demanda2[1]+demanda2[2]) * 1.10, 2)}")
+        result.append(f"Trimestre 2: {round((demanda2[3]+demanda2[4]+demanda2[5]) * 1.10, 2)}")
+        result.append(f"Trimestre 3: {round((demanda2[6]+demanda2[7]+demanda2[8]) * 1.10, 2)}")
+        result.append(f"Trimestre 4: {round((demanda2[9]+demanda2[10]+demanda2[11]) * 1.10, 2)}")
+
+
+        #EMPLEADO
+        D = (sum(demanda1) + sum(demanda2)) / 2
+        Q = self.calcQ(D, k=k, h=h)
+        T = Q / D
+
+        if l < T:
+            R = D*l
+        else:
+            m = 0
+            while(not(m*T < 0) and not(l - ((m+1)*T) > 0)): m+=1
+            R = D * (l-m*T)
+
+        result.append("\------------Politica del Empleado--------------/")
+        result.append(f"Demanda Anual Promedio: {round(D, 2)}")
+        result.append(f"Cantidad de Pedido: {round(Q, 2)}")
+        result.append(f"Tiempo entre Pedidos: {round(T, 2)}")
+        result.append(f"Punto de Reorden: {round(R, 2)}")
+
+        return result
 
 
